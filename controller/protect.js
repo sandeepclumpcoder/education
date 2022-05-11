@@ -27,7 +27,7 @@ const protect = async (req, res, next) => {
       user = await Teachers.findOne({
         where: { teacher_id: decoded.sign_obj.teacher_id },
       });
-    }
+    } 
     if (!user) return next(new AppError(400, "User not exist"));
     req.user = user;
     next();
@@ -35,5 +35,6 @@ const protect = async (req, res, next) => {
     return next(new AppError(401, "Authentication failed. Please login."));
   }
 };
+
 
 module.exports = protect;

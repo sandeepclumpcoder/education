@@ -17,10 +17,6 @@ const Students = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -33,6 +29,22 @@ const Students = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contact: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    dob: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    level: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     is_active: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -44,6 +56,6 @@ const Students = sequelize.define(
   }
 );
 
-Students.sync().then(() => {});
+Students.sync({}).then(() => { });
 
 module.exports = Students;

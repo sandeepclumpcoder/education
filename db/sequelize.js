@@ -3,11 +3,11 @@ const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/../config.env` });
 
 const sequelize = new Sequelize(
-  process.env.DATABASE_NAME,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
+  "education",
+  "root",
+  "",
   {
-    host: process.env.DATABASE_HOST,
+    host: "localhost",
     dialect: "mysql",
     logging: false,
   }

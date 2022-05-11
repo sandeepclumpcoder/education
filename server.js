@@ -1,5 +1,17 @@
-const app = require("./app");
+require("dotenv").config();
+const mainFile = require("./app");
 const express = require("express");
+const app = express();
+const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(__dirname + "/public"));
+app.use(fileUpload());
+
+app.use("/" , mainFile);
+
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

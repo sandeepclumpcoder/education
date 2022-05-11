@@ -1,12 +1,23 @@
 const express = require("express");
 const multer = require("multer");
 const sharp = require("sharp");
-const Students = require("../models/students");
-const auth = require("../controller/protect");
-const jwt = require("jsonwebtoken");
 const router = new express.Router();
+const verifyUser = require("../middleware/verifyUser");
+const studentController = require("../controller/studentController");
 
-router.get("/students", auth, (req, res, next) => {});
+// router.get("/students", auth, (req, res, next) => {});
+
+
+router.post("/student/signup", studentController.signup);
+
+router.post("/student/login", studentController.login);
+
+router.get("/student/editProfile/:student_id", verifyUser, studentController.editProfile);
+
+router.put("/student/updateProfile/:student_id", verifyUser, studentController.updateProfile);
+
+router.post("/student/change-password", verifyUser, studentController.changePassword);
+
 
 /*router.get("/students", auth, (req, res) =>
   Students.findAll({
